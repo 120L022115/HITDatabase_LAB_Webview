@@ -1,0 +1,5 @@
+unpackage/release/
+unpackage/cache/
+unpackage/dist/
+
+!unpackage/res/*
