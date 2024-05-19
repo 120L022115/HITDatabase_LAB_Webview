@@ -1,6 +1,6 @@
 var serverUrl = "http://127.0.0.1:9998/" //"http://127.0.0.1:9998/"
 var reqTitle = "加载"
-var appName = "appTest01_"
+var appName = "database_"
 
 /* db.sql().table(["userinfos"]).where(["mainid=9797"]).update({
           mainid: 9799,
@@ -268,7 +268,7 @@ class SQLQUERY {
       for (var i of Object.keys(this.fromdata)) {
         this.fromdata[i] = appName + this.fromdata[i]
       }
-      str += "SELECT " + this.selectdata.join(",") + " FROM (" + this.fromdata.join(",") + " )"
+      str += "SELECT " + this.selectdata.join(",") + " FROM " + this.fromdata.join(",")
 
       //var arrw = []
       if (typeof this.wheredata == 'object' && Object.keys(this.wheredata).length != 0) {

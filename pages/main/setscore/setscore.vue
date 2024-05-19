@@ -169,12 +169,14 @@
                 }).exec({
                   success(res) {
                     item.score = n
+                    that.$forceUpdate()
                   }
                 })
 
               }
             }
           })
+
         } else {
           db.sql().table(["scores"]).where({
             scid_id: item.scid_id,
@@ -184,6 +186,7 @@
           ]).exec({
             success(res) {
               item.score = null
+              that.$forceUpdate()
             }
           })
         }

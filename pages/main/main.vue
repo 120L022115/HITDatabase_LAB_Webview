@@ -63,6 +63,7 @@
           <view class="subtitle" style="font-size: 50rpx;font-weight: 400;">教务管理</view>
         </view>
         <view class="text">{{VERSION.text}}</view>
+        <button class="linebtnn" @click="testRequest">插入测试用例</button>
         <view class="textcellarea">
           <view class="textcell">{{VERSION.update}}</view>
         </view>
@@ -1102,14 +1103,14 @@
             that.qmodelvalue.having = ""
           } else if (name == '3') { //学生数大于2的课程
             var cc =
-              "(SELECT count(*) as ccount, scid_id as ccid FROM (appTest01_scores ) GROUP BY (scid_id) HAVING (ccount>=2) ORDER BY ccount desc) as cc"
-            that.SQL = "SELECT cid,cname,ccount FROM (appTest01_courses," + cc + ") WHERE ( ccid=cid)"
+              "(SELECT count(*) as ccount, scid_id as ccid FROM database_scores GROUP BY (scid_id) HAVING (ccount>=2) ORDER BY ccount desc) as cc"
+            that.SQL = "SELECT cid,cname,ccount FROM database_courses," + cc + " WHERE ( ccid=cid)"
           } else if (name == '4') { //所有挂科的学生及门数
             that.qmodelid = 2
             that.qmodelvalue.from = "scores"
             that.qmodelvalue.select = "sid,count(*) as counts, min(score) as minscore "
             that.qmodelvalue.where = "score<60"
-            that.qmodelvalue.groupby = "suid_id"
+            that.qmodelvalue.groupby = "sid"
             that.qmodelvalue.orderby = "counts 0"
             that.qmodelvalue.having = ""
           }
